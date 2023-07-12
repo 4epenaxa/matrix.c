@@ -1,0 +1,29 @@
+FLAGS=-Wall -Werror -Wextra
+S21_SOURCES = $(wildcard s21_*.c)
+S21_OBJECTS=$(addprefix build/, $(S21_SOURCES:.c=.o))
+
+S21_TESTS = $(wildcard tests/test*.c)
+S21_TEST_OBJECTS=$(S21_TESTS:.c=.o)
+
+#s21_matrix: $(S21_OBJECTS)
+#	gcc -Wall -Werror -Wextra $(S21_OBJECTS) -o s21_matrix
+
+s21_matrix.a: $(S21_OBJECTS)
+	ar -rcs $@ $^
+
+$(S21_OBJECTS) : build/%.o : %.c s21_matrix.h
+	@mkdir -p build/
+	gcc $(FLAGS) $< -c -o $@
+
+test: $(S21_TEST_OBJECTS) s21_matrix.a
+	gcc $(FLAGS) $^ -o $@ $(shell pkg-config --cflags --libs check)
+
+$(S21_TEST_OBJECTS) : tests/%.o : tests/%.c
+	gcc $(FLAGS) $< -c -o $@
+
+clean:
+	rm -rf build tests/*.o s21_matrix.a test
+
+.PHONY : all clean
+
+
