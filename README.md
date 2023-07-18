@@ -163,8 +163,8 @@ int main(void) {
     SRunner *sr = srunner_create(test_sub());
     srunner_set_fork_status(sr, CK_NOFORK);
     
-// пропишем свой первый тест, назовем его test_sub()
-    tcase_add_test(sr, test_sub());
+// похже сюда сможем добавить второй и последующие тесты
+//    tcase_add_test(sr, test_sub2());
 
     srunner_run_all(sr, CK_NORMAL);
     srunner_free(sr);
@@ -212,7 +212,6 @@ Suite *test_sub(void) {
 // обязательно подключаем нашу библиотеку
 #include "../s21_matrix.h"
 
-// объявляем наш сьют
 Suite *test_sub(void);
 
 #endif  // SRC_TESTS_TEST_H
