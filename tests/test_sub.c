@@ -1,4 +1,4 @@
-#include "test.h"
+#include "tests.h"
 
 // START_TEST(test_sub_uninitialized) {
 //   matrix_t A;

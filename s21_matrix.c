@@ -1,9 +1,5 @@
 #include "s21_matrix.h"
 
-int main() {
-  return 0;
-}
-
 int s21_create_matrix(int rows, int columns, matrix_t *result) {
   int error = OK;
   if (rows <= 0 || columns <= 0) {
