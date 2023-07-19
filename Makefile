@@ -1,26 +1,34 @@
-
 CC=gcc
-CFLAGS = -Wall -Wextra -Werror -std=c11 -pedantic
+LIB=s21_matrix.a
+CFLAGS=-Wall -Wextra -Werror -std=c11 -pedantic
+S21_SOURCES=$(wildcard s21_*.c)
+S21_OBJECTS=$(addprefix build/, $(S21_SOURCES:.c=.o))
+S21_TESTS=$(wildcard tests/test*.c)
+S21_TESTS_OBJECTS=$(addprefix build_tests/, $(notdir $(S21_TESTS:.c=.o)))
 
-all: s21_matrix.a
+all: $(LIB)
 
-s21_matrix.a: s21_matrix.o s21_add_matrix.o
-	ar -rcs s21_matrix.a s21_matrix.o s21_add_matrix.o
+$(LIB): $(S21_OBJECTS)
+	ar -rcs $@ $^
+	
+$(S21_OBJECTS) : build/%.o : %.c s21_matrix.h
+	@mkdir -p build/
+	$(CC) $(FLAGS) $< -c -o $@
+	
+test: $(S21_TESTS_OBJECTS) $(LIB)
+	$(CC) $(CFLAGS) $^ -o $@ $(shell pkg-config --cflags --libs check)
 
-s21_matrix.o: s21_matrix.c s21_matrix.h
-	$(CC) $(CFLAGS) -c s21_matrix.c -o s21_matrix.o
+$(S21_TESTS_OBJECTS) : build_tests/%.o : tests/%.c tests/tests.h
+	@mkdir -p build_tests/
+	$(CC) $(FLAGS) $< -c -o $@
 
-s21_add_matrix.o: s21_add_matrix.c s21_matrix.h
-	$(CC) $(CFLAGS) -c s21_add_matrix.c -o s21_add_matrix.o
-
-test: tests/tests.o tests/test_sub.o s21_matrix.a
-	$(CC) $(CFLAGS) tests/tests.o tests/test_sub.o s21_matrix.a -o test $(shell pkg-config --cflags --libs check)
-
-tests/tests.o: tests/tests.c tests/tests.h
-	$(CC) $(CFLAGS) -c tests/tests.c -o tests/tests.o
-
-tests/test_sub.o: tests/test_sub.c
-	$(CC) $(CFLAGS) -c tests/test_sub.c -o tests/test_sub.o
+run: 
+	./test
 
 clean:
-	rm -f s21_matrix s21_matrix.a  *.o tests/*.o test
+	rm -rf s21_matrix.a test ./build/ ./build_tests/
+	echo Cleaning complete successfully...
+	
+.PHONY : all clean s21_matrix.a test run
+
+.SILENT: run clean
