@@ -76,6 +76,9 @@ int s21_sum_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
 }
 
 int s21_sub_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
+  if (incorrect_matrix(A) || incorrect_matrix(B)) {
+    return ERROR_MATR;
+  }
   if (A->rows != B->rows || A->columns != B->columns) {
     return ERROR_CALC; // Matrices have different dimensions
   }
@@ -140,4 +143,9 @@ int s21_transpose(matrix_t *A, matrix_t *result) {
   }
 
   return OK;
+}
+
+// additional func
+int incorrect_matrix(matrix_t *A) {
+  return !A || A->rows <= 0 || A->columns <= 0 || !A->matrix;
 }

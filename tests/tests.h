@@ -3,6 +3,8 @@
 
 #include <check.h>
 #include <stdlib.h>
+#include <time.h>
+
 #include "../s21_matrix.h"
 
 Suite *test_create_remove(void);
