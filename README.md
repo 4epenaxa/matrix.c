@@ -40,7 +40,7 @@ s21_matrix: s21_matrix.c s21_matrix.h
 ```
 src
 ├── Makefile
-├── **s21_add_matrix.c**
+├── s21_add_matrix.c
 ├── s21_matrix.c
 └── s21_matrix.h
 ```
@@ -78,7 +78,7 @@ src
 ├── Makefile
 ├── s21_add_matrix.c
 ├── s21_add_matrix.o
-├── **s21_matrix**
+├── s21_matrix
 ├── s21_matrix.c
 ├── s21_matrix.h
 └── s21_matrix.o
@@ -122,7 +122,7 @@ src
 ├── Makefile
 ├── s21_add_matrix.c
 ├── s21_add_matrix.o
-├── **s21_matrix.a**
+├── s21_matrix.a
 ├── s21_matrix.c
 ├── s21_matrix.h
 └── s21_matrix.o
@@ -138,10 +138,10 @@ src
 
 ```
 src
-├── **tests/**
-|   ├── **test_sub.c**
-|   ├── **tests.c**
-|   └── **tests.h**
+├── tests/
+|   ├── test_sub.c
+|   ├── tests.c
+|   └── tests.h
 ├── Makefile
 ├── s21_add_matrix.c
 ├── s21_add_matrix.o
@@ -217,7 +217,7 @@ Suite *test_sub(void);
 #endif  // SRC_TESTS_TEST_H
 ```
 
-Библиотеку `check.h` вам придется поставить самим. Или читайте тут небольшую инструкцию от меня. `**(чуть позже)**`
+Библиотеку `check.h` вам придется поставить самим. Или читайте тут небольшую инструкцию от меня. `(чуть позже)`
 
 Всё. Осталось правильно написать `Makefile` и мы готовы тестировать наши матрицы.
 
@@ -333,7 +333,7 @@ clean:
 	rm -f s21_matrix s21_matrix.a  *.o tests/*.o test build/*
 ```
 
-В итоге, мы добавили две переменные **`S21_OBJECTS`** и `**S21_SOURCES**` которые будут содержать список всех файлов s21_*.c а так же список объектных файлов с префиксом "build/" готовых для сборки вашего проекта. Например, **`build/s21_file1.o build/s21_file2.o build/s21_file3.o`**.
+В итоге, мы добавили две переменные `S21_OBJECTS` и `S21_SOURCES` которые будут содержать список всех файлов s21_*.c а так же список объектных файлов с префиксом "build/" готовых для сборки вашего проекта. Например, `build/s21_file1.o build/s21_file2.o build/s21_file3.o`.
 
 Обычно такая структура используется для разделения объектных файлов и исходных файлов, чтобы они хранились в разных директориях и улучшить организацию проекта.
 
@@ -341,16 +341,16 @@ clean:
 
 ```
 src
-├── **build/**
-|   ├── **s21_add_matrix.o**
-|   └── **s21_matrix.o**
-├── **tests/**
-|   ├── **test_sub.c**
-|   ├── **tests.c**
-|   └── **tests.h**
+├── build/
+|   ├── s21_add_matrix.o
+|   └── s21_matrix.o
+├── tests/
+|   ├── test_sub.c
+|   ├── tests.c
+|   └── tests.h
 ├── Makefile
 ├── s21_add_matrix.c
-├── **s21_matrix.a**
+├── s21_matrix.a
 ├── s21_matrix.c
 └── s21_matrix.h
 ```
@@ -403,16 +403,16 @@ clean:
 
 ```
 src
-├── **build/**
-|   ├── **s21_add_matrix.o**
-|   └── **s21_matrix.o**
-├── **build_tests/**
-|   ├── **test_sub.o**
-|   └── **tests.o**
-├── **tests/**
-|   ├── **test_sub.c**
-|   ├── **tests.c**
-|   └── **tests.h**
+├── build/
+|   ├── s21_add_matrix.o
+|   └── s21_matrix.o
+├── build_tests/
+|   ├── test_sub.o
+|   └── tests.o
+├── tests/
+|   ├── test_sub.c
+|   ├── tests.c
+|   └── tests.h
 ├── Makefile
 ├── s21_add_matrix.c
 ├── s21_matrix.a
