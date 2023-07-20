@@ -50,6 +50,8 @@ int s21_determinant(matrix_t *A, double *result);
 /** Inverse of the matrix (inverse_matrix) */
 int s21_inverse_matrix(matrix_t *A, matrix_t *result);
 
+// additional func
 int incorrect_matrix(matrix_t *A);
+void from_array_to_matrix(matrix_t *A, const double *arr);
 
 #endif // S21_MATRIX_H

@@ -149,3 +149,9 @@ int s21_transpose(matrix_t *A, matrix_t *result) {
 int incorrect_matrix(matrix_t *A) {
   return !A || A->rows <= 0 || A->columns <= 0 || !A->matrix;
 }
+
+void from_array_to_matrix(matrix_t *A, const double *arr) {
+  for (int i = 0; i < A->rows; i++)
+    for (int j = 0; j < A->columns; j++)
+      A->matrix[i][j] = arr[i * A->columns + j];
+}

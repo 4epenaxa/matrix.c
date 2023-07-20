@@ -54,7 +54,8 @@ START_TEST(test_sub_ok) {
 END_TEST
 
 Suite *test_sub(void) {
-  Suite *s = suite_create("\033[45m-=S21_SUB=-\033[0m");
+  Suite *s = suite_create("\033[41m-=S21_SUBTRACTING=-\033[0m"RAINBOW_COLORS);
+  
   TCase *tc = tcase_create("s21_sub_tc");
 
   tcase_add_test(tc, test_sub_rows);
@@ -65,5 +66,6 @@ Suite *test_sub(void) {
   tcase_add_loop_test(tc, test_sub_ok, 0,97);
 
   suite_add_tcase(s, tc);
+
   return s;
 }
