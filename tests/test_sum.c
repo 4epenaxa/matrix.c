@@ -24,15 +24,15 @@ START_TEST(test_sum_ok) {
 }
 END_TEST
 
-// START_TEST(test_sum_uninitialized) {
-//   matrix_t A;
-//   s21_create_matrix(2, 2, &A);
-//   ck_assert_int_eq(s21_sum_matrix(NULL, NULL, &A), ERROR_MATR);
-//   ck_assert_int_eq(s21_sum_matrix(NULL, &A, NULL), ERROR_MATR);
-//   ck_assert_int_eq(s21_sum_matrix(&A, NULL, NULL), ERROR_MATR);
-//   s21_remove_matrix(&A);
-// }
-// END_TEST
+START_TEST(test_sum_uninitialized) {
+  matrix_t A;
+  s21_create_matrix(2, 2, &A);
+  ck_assert_int_eq(s21_sum_matrix(NULL, NULL, &A), ERROR_MATR);
+  ck_assert_int_eq(s21_sum_matrix(NULL, &A, NULL), ERROR_MATR);
+  ck_assert_int_eq(s21_sum_matrix(&A, NULL, NULL), ERROR_MATR);
+  s21_remove_matrix(&A);
+}
+END_TEST
 
 START_TEST(test_sum_rows) {
   matrix_t A, B, C;
@@ -55,13 +55,13 @@ START_TEST(test_sum_cols) {
 END_TEST
 
 Suite *test_sum(void) {
-  Suite *s = suite_create("\033[41m-=S21_ADDING=-\033[0m"RAINBOW_COLORS"test_sum_uninitialized");
+  Suite *s = suite_create("\033[41m-=S21_ADDING=-\033[0m"RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_sum_tc");
 
   srand(time(NULL));
 
   tcase_add_loop_test(tc, test_sum_ok, 0, 97);
-//   tcase_add_test(tc, test_sum_uninitialized);
+  tcase_add_test(tc, test_sum_uninitialized);
   tcase_add_test(tc, test_sum_rows);
   tcase_add_test(tc, test_sum_cols);
 

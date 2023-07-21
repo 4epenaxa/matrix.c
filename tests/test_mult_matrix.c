@@ -586,15 +586,15 @@ START_TEST(test_mult_matrix_10) {
 }
 END_TEST
 
-// START_TEST(test_mult_uninitialized) {
-//   matrix_t A;
-//   s21_create_matrix(2, 2, &A);
-//   ck_assert_int_eq(s21_mult_matrix(NULL, NULL, &A), ERROR_MATR);
-//   ck_assert_int_eq(s21_mult_matrix(NULL, &A, NULL), ERROR_MATR);
-//   ck_assert_int_eq(s21_mult_matrix(&A, NULL, NULL), ERROR_MATR);
-//   s21_remove_matrix(&A);
-// }
-// END_TEST
+START_TEST(test_mult_uninitialized) {
+  matrix_t A;
+  s21_create_matrix(2, 2, &A);
+  ck_assert_int_eq(s21_mult_matrix(NULL, NULL, &A), ERROR_MATR);
+  ck_assert_int_eq(s21_mult_matrix(NULL, &A, NULL), ERROR_MATR);
+  ck_assert_int_eq(s21_mult_matrix(&A, NULL, NULL), ERROR_MATR);
+  s21_remove_matrix(&A);
+}
+END_TEST
 
 START_TEST(test_mult_rows) {
   matrix_t A, B, C;
@@ -607,7 +607,7 @@ START_TEST(test_mult_rows) {
 END_TEST
 
 Suite *test_mult_matrix(void) {
-  Suite *s = suite_create("\033[41m-=S21_MULT_MATRIX=-\033[0m"RAINBOW_COLORS"test_mult_uninitialized");
+  Suite *s = suite_create("\033[41m-=S21_MULT_MATRIX=-\033[0m"RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_mult_matrix_tc");
 
   srand(time(NULL));
@@ -622,7 +622,7 @@ Suite *test_mult_matrix(void) {
   tcase_add_test(tc, test_mult_matrix_8);
   tcase_add_test(tc, test_mult_matrix_9);
   tcase_add_test(tc, test_mult_matrix_10);
-//   tcase_add_test(tc, test_mult_uninitialized);
+  tcase_add_test(tc, test_mult_uninitialized);
   tcase_add_test(tc, test_mult_rows);
 
   suite_add_tcase(s, tc);

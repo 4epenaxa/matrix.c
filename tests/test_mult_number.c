@@ -23,23 +23,23 @@ START_TEST(test_mult_num_ok) {
 }
 END_TEST
 
-// START_TEST(test_mult_num_uninitialized) {
-//   matrix_t A;
-//   s21_create_matrix(2, 2, &A);
-//   ck_assert_int_eq(s21_mult_number(NULL, 3, NULL), ERROR_MATR);
-//   ck_assert_int_eq(s21_mult_number(NULL, 72, &A), ERROR_MATR);
-//   s21_remove_matrix(&A);
-// }
-// END_TEST
+START_TEST(test_mult_num_uninitialized) {
+  matrix_t A;
+  s21_create_matrix(2, 2, &A);
+  ck_assert_int_eq(s21_mult_number(NULL, 3, NULL), ERROR_MATR);
+  ck_assert_int_eq(s21_mult_number(NULL, 72, &A), ERROR_MATR);
+  s21_remove_matrix(&A);
+}
+END_TEST
 
 Suite *test_mult_number(void) {
-  Suite *s = suite_create("\033[41m-=S21_MULT_NUMBER=-\033[0m"RAINBOW_COLORS"test_mult_num_uninitialized");
+  Suite *s = suite_create("\033[41m-=S21_MULT_NUMBER=-\033[0m"RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_mult_number_tc");
 
   srand(time(NULL));
 
   tcase_add_loop_test(tc, test_mult_num_ok, 0, 99);
-  // tcase_add_test(tc, test_mult_num_uninitialized);
+  tcase_add_test(tc, test_mult_num_uninitialized);
 
   suite_add_tcase(s, tc);
   return s;

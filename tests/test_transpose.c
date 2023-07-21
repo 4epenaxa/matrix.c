@@ -340,17 +340,17 @@ START_TEST(test_transpose_10) {
 }
 END_TEST
 
-// START_TEST(test_transpose_uninitialized) {
-//   matrix_t A;
-//   s21_create_matrix(2, 2, &A);
-//   ck_assert_int_eq(s21_transpose(NULL, NULL), ERROR_MATR);
-//   ck_assert_int_eq(s21_transpose(NULL, &A), ERROR_MATR);
-//   s21_remove_matrix(&A);
-// }
-// END_TEST
+START_TEST(test_transpose_uninitialized) {
+  matrix_t A;
+  s21_create_matrix(2, 2, &A);
+  ck_assert_int_eq(s21_transpose(NULL, NULL), ERROR_MATR);
+  ck_assert_int_eq(s21_transpose(NULL, &A), ERROR_MATR);
+  s21_remove_matrix(&A);
+}
+END_TEST
 
 Suite *test_transpose(void) {
-  Suite *s = suite_create("\033[41m-=S21_TRANSPOSE=-\033[0m"RAINBOW_COLORS"test_transpose_uninitialized");
+  Suite *s = suite_create("\033[41m-=S21_TRANSPOSE=-\033[0m"RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_transpose_tc");
 
   srand(time(NULL));
@@ -365,7 +365,7 @@ Suite *test_transpose(void) {
   tcase_add_test(tc, test_transpose_8);
   tcase_add_test(tc, test_transpose_9);
   tcase_add_test(tc, test_transpose_10);
-  // tcase_add_test(tc, test_transpose_uninitialized);
+  tcase_add_test(tc, test_transpose_uninitialized);
 
   suite_add_tcase(s, tc);
   return s;
