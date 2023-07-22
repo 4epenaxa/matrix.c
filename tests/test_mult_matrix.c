@@ -607,7 +607,7 @@ START_TEST(test_mult_rows) {
 END_TEST
 
 Suite *test_mult_matrix(void) {
-  Suite *s = suite_create("\033[41m-=S21_MULT_MATRIX=-\033[0m"RAINBOW_COLORS);
+  Suite *s = suite_create("\033[41m-=S21_MULT_MATRIX=-\033[0m" RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_mult_matrix_tc");
 
   srand(time(NULL));

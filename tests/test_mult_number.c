@@ -33,7 +33,7 @@ START_TEST(test_mult_num_uninitialized) {
 END_TEST
 
 Suite *test_mult_number(void) {
-  Suite *s = suite_create("\033[41m-=S21_MULT_NUMBER=-\033[0m"RAINBOW_COLORS);
+  Suite *s = suite_create("\033[41m-=S21_MULT_NUMBER=-\033[0m" RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_mult_number_tc");
 
   srand(time(NULL));

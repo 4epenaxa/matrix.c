@@ -8,7 +8,9 @@
 
 #include "../s21_matrix.h"
 
-#define RAINBOW_COLORS "\033[48;2;255;165;0m     \033[43m     \033[42m     \033[46m     \033[44m     \033[45m     \033[0m"
+#define RAINBOW_COLORS                                                         \
+  "\033[48;2;255;165;0m     \033[43m     \033[42m     \033[46m     \033[44m  " \
+  "   \033[45m     \033[0m"
 
 Suite *test_create_remove(void);
 Suite *test_equal(void);

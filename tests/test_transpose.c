@@ -350,7 +350,7 @@ START_TEST(test_transpose_uninitialized) {
 END_TEST
 
 Suite *test_transpose(void) {
-  Suite *s = suite_create("\033[41m-=S21_TRANSPOSE=-\033[0m"RAINBOW_COLORS);
+  Suite *s = suite_create("\033[41m-=S21_TRANSPOSE=-\033[0m" RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_transpose_tc");
 
   srand(time(NULL));

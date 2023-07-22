@@ -1,9 +1,11 @@
 #ifndef S21_MATRIX_H
 #define S21_MATRIX_H
-
 #include <math.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <time.h>
 
 #define OK 0         /** OK value */
 #define ERROR_MATR 1 /** Error, incorrect matrix*/
@@ -53,5 +55,6 @@ int s21_inverse_matrix(matrix_t *A, matrix_t *result);
 // additional func
 int incorrect_matrix(matrix_t *A);
 void from_array_to_matrix(matrix_t *A, const double *arr);
+int _create_minor(matrix_t *A, matrix_t *result, int row, int column);
 
-#endif // S21_MATRIX_H
+#endif  // S21_MATRIX_H

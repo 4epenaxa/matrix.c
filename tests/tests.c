@@ -8,9 +8,9 @@ int main(void) {
                               test_mult_number(),
                               test_mult_matrix(),
                               test_transpose(),
-                              // test_determinant(),
-                              // test_calc_complements(),
-                              // test_inverse(),
+                              test_determinant(),
+                              test_calc_complements(),
+                              test_inverse(),
 
                               NULL};
   for (int i = 0; s21_matrix_test[i] != NULL; i++) {

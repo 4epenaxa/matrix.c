@@ -55,7 +55,7 @@ START_TEST(test_sum_cols) {
 END_TEST
 
 Suite *test_sum(void) {
-  Suite *s = suite_create("\033[41m-=S21_ADDING=-\033[0m"RAINBOW_COLORS);
+  Suite *s = suite_create("\033[41m-=S21_ADDING=-\033[0m" RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_sum_tc");
 
   srand(time(NULL));

@@ -16,7 +16,8 @@ START_TEST(s21_create_remove) {
 END_TEST
 
 Suite *test_create_remove(void) {
-  Suite *s = suite_create("\033[41m-=S21_CREATE_REMOVE=-\033[0m"RAINBOW_COLORS);
+  Suite *s =
+      suite_create("\033[41m-=S21_CREATE_REMOVE=-\033[0m" RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_remove_tc");
 
   tcase_add_test(tc, s21_create_remove);

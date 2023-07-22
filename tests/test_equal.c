@@ -77,7 +77,7 @@ START_TEST(s21_not_equal_columns) {
 END_TEST
 
 Suite *test_equal(void) {
-  Suite *s = suite_create("\033[41m-=S21_EQUAL=-\033[0m"RAINBOW_COLORS);
+  Suite *s = suite_create("\033[41m-=S21_EQUAL=-\033[0m" RAINBOW_COLORS);
   TCase *tc = tcase_create("s21_equal_tc");
 
   srand(time(NULL));
