@@ -3,9 +3,7 @@
 int s21_sub_matrix(matrix_t *A, matrix_t *B, matrix_t *result) {
   if (incorrect_matrix(A) || incorrect_matrix(B)) return ERROR_MATR;
   if (A->rows != B->rows || A->columns != B->columns)
-    return ERROR_CALC;  // Matrices have different dimensions
-  // if (s21_create_matrix(A->rows, A->columns, result) != OK) return
-  // ERROR_MATR; // Error creating result matrix
+    return ERROR_CALC;
   s21_create_matrix(A->rows, A->columns, result);
   for (int i = 0; i < A->rows; i++)
     for (int j = 0; j < A->columns; j++)
