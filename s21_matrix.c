@@ -32,12 +32,7 @@ void s21_remove_matrix(matrix_t *A) {
 
 // additional func
 int incorrect_matrix(matrix_t *A) {
-  if (!A) return 1;
-  // else if (A->rows < 1) return 1;
-  // else if (A->columns < 1) return 1;
-  // else if (!A->matrix) return 1;
-  // return !A || A->rows < 1 || A->columns < 1 || !A->matrix;
-  return 0;
+  return !A || A->rows < 1 || A->columns < 1 || !A->matrix;
 }
 
 void from_array_to_matrix(matrix_t *A, const double *arr) {
